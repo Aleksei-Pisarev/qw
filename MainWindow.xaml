@@ -14,7 +14,7 @@
 
     <StackPanel Orientation="Horizontal">
         <Image Source="Image/M.jpg" Width="70" Height="70"/>
-        <TextBlock Text="Концелярский товар" Style="{StaticResource Title}"/>
+        <TextBlock Text="{Binding ElementName=FrmMain, Path=Content.Title}" Style="{StaticResource Title}"/>
     </StackPanel>
     <Frame x:Name="FrmMain" NavigationUIVisibility="Hidden" Grid.Row="1"/>
     </Grid>

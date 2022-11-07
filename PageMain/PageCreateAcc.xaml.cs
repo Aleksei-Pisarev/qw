@@ -26,14 +26,52 @@ namespace Wpf_PR_12_2_Pisarev.PageMain
             InitializeComponent();
         }
 
-        private void btnRegIn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.frameMain.GoBack();
+        }
+
+        private void psbPass_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (psbPass.Password !=txbPass.Text)
+            {
+                btnCreate.IsEnabled = false;
+                psbPass.Background = Brushes.LightCoral;
+                psbPass.BorderBrush = Brushes.Green;
+            }
+            else
+            {
+                btnCreate.IsEnabled = true;
+                psbPass.Background = Brushes.LightGreen;
+                psbPass.BorderBrush = Brushes.Green;
+            }
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            if (AppConnect.modelOdb.User.Count(x => x.login==txbLogin.Text)>0)
+            {
+                MessageBox.Show("Пользователь с таким логином есть!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            try
+            {
+                User userOdj = new User()
+                {
+                    login = txbLogin.Text,
+                    name = txbName.Text,
+                    password = txbPass.Text,
+                    IdRole = 2
+                };
+                AppConnect.modelOdb.User.Add(userOdj);
+                AppConnect.modelOdb.SaveChanges();
+                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при добавлении данных!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

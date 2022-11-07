@@ -6,28 +6,28 @@
       xmlns:local="clr-namespace:Wpf_PR_12_2_Pisarev.PageMain"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageCreateAcc">
+      Title="Регистрация">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Введите имя" Style="{StaticResource Label}"/>
-                <TextBox Text="" Style="{StaticResource TextBox}"/>
+                <TextBox x:Name="txbName" Text="" Style="{StaticResource TextBox}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Введите логин" Style="{StaticResource Label}"/>
-                <TextBox Text="" Style="{StaticResource TextBox}"/>
+                <TextBox x:Name="txbLogin" Text="" Style="{StaticResource TextBox}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Введите пароль" Style="{StaticResource Label}"/>
                 <StackPanel>
-                    <TextBox Text="" Style="{StaticResource TextBox}"/>
-                    <PasswordBox Style="{StaticResource PasswordBox}"/>
+                    <TextBox x:Name="txbPass" Text="" Style="{StaticResource TextBox}"/>
+                    <PasswordBox x:Name="psbPass" Style="{StaticResource PasswordBox}" PasswordChanged="psbPass_PasswordChanged"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonB}" Click="btnBack_Click"/>
-                <Button x:Name="btnRegIn" Content="Создать" Style="{StaticResource ButtonG}" Click="btnRegIn_Click"/>
+                <Button x:Name="btnCreate" Content="Создать" Style="{StaticResource ButtonG}" IsEnabled="False" Click="btnCreate_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
