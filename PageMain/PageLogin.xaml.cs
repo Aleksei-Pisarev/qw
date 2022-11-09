@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf_PR_12_2_Pisarev.ApplicationData;
+using Wpf_PR_12_2_Pisarev.PageAdmin;
+using Wpf_PR_12_2_Pisarev.PageStudent;
 
 namespace Wpf_PR_12_2_Pisarev.PageMain
 {
@@ -41,9 +43,12 @@ namespace Wpf_PR_12_2_Pisarev.PageMain
                     {
                         case 1:
                             MessageBox.Show("Здравствуйте, Администратор " + userObj.name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            NavigationService.Navigate(new PageMenuAdmin());
+                            
                             break;
                         case 2:
                             MessageBox.Show("Здравствуйте, Ученик " + userObj.name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            NavigationService.Navigate(new PageAccountStudent());
                             break;
                     }
                 }
@@ -52,6 +57,7 @@ namespace Wpf_PR_12_2_Pisarev.PageMain
             {
                 MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая ошибка приложения!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
 
         private void btnRegIn_Click(object sender, RoutedEventArgs e)
